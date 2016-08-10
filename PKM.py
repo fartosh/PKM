@@ -1,4 +1,15 @@
 import subprocess
+import sys
+from getpass import getpass
 
 # zapisywanie strumienia do pliku - zmiana parametrow pozniej
-subprocess.call([".\\ffmpeg\\bin\\ffmpeg", "-i", "rtsp://admin:DoTestowania@172.20.16.106:554/profile1/media.smp", "-acodec", "copy", "-vcodec", "copy", "test.mp4"], shell=True)
+profile = 2
+IP = "172.20.16.106"
+port = 554
+
+print "Log in"
+login = raw_input("Login: ")
+password = raw_input("Password: ")
+
+subprocess.call([".\\ffmpeg\\bin\\ffmpeg", "-i", "rtsp://"+login+":"+password+"@"+IP+":"+port.__str__()+"/profile"+profile.__str__()+"/media.smp", "-acodec", "copy", "-vcodec", "copy", "strzyza.mp4", "-y"], shell=True)
+
